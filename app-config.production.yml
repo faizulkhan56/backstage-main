@@ -1,0 +1,27 @@
+backend:
+  baseUrl: http://localhost:7007
+  listen: ':7007'
+
+  database:
+    client: pg
+    connection:
+      host: ${POSTGRES_HOST:-localhost}
+      port: ${POSTGRES_PORT:-5432}
+      user: ${POSTGRES_USER:-backstage}
+      password: ${POSTGRES_PASSWORD:-backstage}
+      database: ${POSTGRES_DB:-backstage_db}
+
+auth:
+  providers:
+    github:
+      clientId: ${GITHUB_CLIENT_ID}
+      clientSecret: ${GITHUB_CLIENT_SECRET}
+    guest: null
+
+integrations:
+  github:
+    - host: github.com
+      token: ${GITHUB_TOKEN}
+
+catalog:
+  locations: []
