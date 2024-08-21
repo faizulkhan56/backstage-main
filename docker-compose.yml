@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: backstage
+      POSTGRES_PASSWORD: backstage
+      POSTGRES_DB: backstage_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backstage:
+    build:
+      context: .
+      dockerfile: packages/backend/Dockerfile
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: backstage
+      POSTGRES_PASSWORD: backstage
+      POSTGRES_DB: backstage_db
+    ports:
+      - "7007:7007"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres-data:

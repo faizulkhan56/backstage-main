@@ -32,6 +32,11 @@ backend.add(import('@backstage/plugin-catalog-backend-module-logs'));
 
 // permission plugin
 backend.add(import('@backstage/plugin-permission-backend/alpha'));
+{
+}
+backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
+{
+}
 backend.add(
   import('@backstage/plugin-permission-backend-module-allow-all-policy'),
 );
